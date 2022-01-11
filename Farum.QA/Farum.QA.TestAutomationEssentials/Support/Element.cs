@@ -38,7 +38,7 @@ namespace Farum.QA.TestAutomationEssentials.Support
         {
             webDriver
                 .Wait($"Cannot find element located by {locator} at \n {webDriver.Current.Url}")
-                .Until(expectedContidion ?? ExpectedContidions.ElementIsVisible(locator));
+                .Until(expectedContidion ?? ExpectedConditions.ElementIsVisible(locator));
 
             Elem = webDriver.Current.FindElement(locator);
             Locator = locator;
