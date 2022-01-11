@@ -10,69 +10,84 @@ namespace Farum.QA.TestAutomationEssentials.Support
 {
     public class Element : IWebElement
     {
-        public IWebElement _element;
-        public readonly By _locator;
-        public readonly WebDriver _webDriver;
+        public IWebElement Elem;
+        public readonly By Locator;
+        private readonly WebDriver _webDriver;
 
+        public string TagName => Elem.TagName;
 
+        public string Text => Elem.Text;
 
-        public string TagName => _element.TagName;
+        public bool Enabled => Elem.Enabled;
 
-        public string Text => _element.Text;
+        public bool Selected => Elem.Selected;
 
-        public bool Enabled => _element.Enabled;
+        public Point Location => Elem.Location;
 
-        public bool Selected => _element.Selected;
+        public Size Size => Elem.Size;
 
-        public Point Location => _element.Location;
+        public bool Displayed => Elem.Displayed;
 
-        public Size Size => _element.Size;
+        /// <summary>
+        /// Returns an Element object, which represents IWebElement. This constructor uses default Wait Time, as set in ConfigurationDriver.
+        /// </summary>
+        /// <param name="locator">Locator for the Element</param>
+        /// <param name="webDriver">WebDriver which should search for given locator.</param>
+        /// <param name="expectedContidion">Optional argument for Support.ExpectedConditions method, which will be called before element is found. null - verify if element is visible on DOM.</param>
+        public Element(By locator, WebDriver webDriver, Func<IWebDriver, IWebElement> expectedContidion = null)
+        {
+            webDriver
+                .Wait($"Cannot find element located by {locator} at \n {webDriver.Current.Url}")
+                .Until(expectedContidion ?? ExpectedContidions.ElementIsVisible(locator));
 
-        public bool Displayed => _element.Displayed;
+            Elem = webDriver.Current.FindElement(locator);
+            Locator = locator;
+            _webDriver = webDriver;
+        }
 
         public void Clear()
         {
-            throw new NotImplementedException();
+            Elem.Clear();
         }
 
         public void Click()
         {
-            throw new NotImplementedException();
+            Elem.Click();
         }
 
         public IWebElement FindElement(By by)
         {
-            throw new NotImplementedException();
+            return Elem.FindElement(by);
         }
 
         public ReadOnlyCollection<IWebElement> FindElements(By by)
         {
-            throw new NotImplementedException();
+            return Elem.FindElements(by);
         }
 
         public string GetAttribute(string attributeName)
         {
-            throw new NotImplementedException();
+            return Elem.GetAttribute(attributeName);
         }
 
         public string GetCssValue(string propertyName)
         {
-            throw new NotImplementedException();
+            return Elem.GetCssValue(propertyName);
         }
 
         public string GetDomAttribute(string attributeName)
         {
-            throw new NotImplementedException();
+            return Elem.GetDomAttribute(attributeName);
         }
 
         public string GetDomProperty(string propertyName)
         {
-            throw new NotImplementedException();
+            return Elem.GetDomProperty(propertyName);
         }
 
         public string GetProperty(string propertyName)
         {
-            throw new NotImplementedException();
+            return Elem.GetProperty(propertyName);
         }
 
         public ISearchContext GetShadowRoot()
