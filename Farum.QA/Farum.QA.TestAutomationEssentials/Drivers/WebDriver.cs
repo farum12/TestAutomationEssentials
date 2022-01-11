@@ -108,10 +108,6 @@ namespace Farum.QA.TestAutomationEssentials.Drivers
             }
         }
 
-
-
-
-
         public void Dispose()
         {
             if (_isDisposed)
