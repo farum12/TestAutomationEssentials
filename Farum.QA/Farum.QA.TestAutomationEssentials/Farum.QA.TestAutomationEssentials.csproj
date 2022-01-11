@@ -18,8 +18,6 @@
     <Folder Include="Drivers\PageDrivers\" />
     <Folder Include="Features\" />
     <Folder Include="StepsDefinitions\" />
-    <Folder Include="Support\Hooks\" />
-    <Folder Include="Support\" />
   </ItemGroup>
 
 </Project>
