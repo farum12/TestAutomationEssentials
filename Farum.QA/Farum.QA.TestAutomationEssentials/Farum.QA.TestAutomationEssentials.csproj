@@ -14,10 +14,4 @@
     <PackageReference Include="FluentAssertions" Version="6.3.0" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Drivers\PageDrivers\" />
-    <Folder Include="Features\" />
-    <Folder Include="StepsDefinitions\" />
-  </ItemGroup>
-
 </Project>

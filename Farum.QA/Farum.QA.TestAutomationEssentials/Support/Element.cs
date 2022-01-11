@@ -97,7 +97,7 @@ namespace Farum.QA.TestAutomationEssentials.Support
 
         public void SendKeys(string text)
         {
-            throw new NotImplementedException();
+            Elem.SendKeys(text);
         }
 
         public void Submit()
